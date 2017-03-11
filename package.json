@@ -1,0 +1,14 @@
+{
+  "name": "graffy-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kevmojay/graffy-api.git",
+  "author": "<kevin.moore.138@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "pg": "^6.1.3",
+    "underscore": "^1.8.3"
+  }
+}
