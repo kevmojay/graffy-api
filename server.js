@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const Pool = require('pg').Pool;
 const bodyParser = require('body-parser');
+const knex = require('knex');
 
 const pgConfig = require('./src/config/config').pgConfig;
 const usersRouter = require('./src/routes/users');
@@ -11,6 +12,7 @@ const server = http.Server(app);
 const port = process.env.PORT || 8080;
 
 const pool = new Pool(pgConfig);
+const knexPool = knex(pgConfig);
 
 pool.on('error', function (err, client) {
   console.error('idle client error', err.message, err.stack)
@@ -29,6 +31,7 @@ app.use(function(req, res, next) {
 app.use('/user', usersRouter);
 app.listen(port);
 
-exports.query = (text, values) => pool.query(text, values);
+// exports.query = (text, values) => pool.query(text, values);
+exports.knex = knexPool;
 
 module.exports = app;
